@@ -25,7 +25,7 @@ class SigmaLinear(nn.Linear):
             u = self.weight.T.mv(v)
             u = F.normalize(u, dim=0)
             self.u.data.copy_(u)
-        result = torch.sum(v * torch.matmul(self.weight, u))
+        return torch.sum(v * torch.matmul(self.weight, u))
     
     def get_weight(self,):
         sigma = self.get_sigma()
